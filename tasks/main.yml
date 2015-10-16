@@ -2,42 +2,42 @@
 - name: Install git on Homebrew (Mac OSX) systems
   homebrew:
     name: git
-    state: "{{ git_state }}"
+    state: "{{ 'latest' when git_install_latest else 'present' }}"
     update_homebrew: "{{ git_update_pkg_mgr }}"
   when: ansible_os_family == 'Darwin'
 
 - name: Install git on Debian-flavours
   apt:
     name: git
-    state: "{{ git_state }}"
+    state: "{{ 'latest' when git_install_latest else 'present' }}"
     update_cache: "{{ git_update_pkg_mgr }}"
   when: ansible_pkg_mgr == 'apt'
 
 - name: Install git on CentOS-flavours
   yum:
     name: git
-    state: "{{ git_state }}"
+    state: "{{ 'latest' when git_install_latest else 'present' }}"
     update_cache: "{{ git_update_pkg_mgr }}"
   when: ansible_pkg_mgr == 'yum'
 
 - name: Install git via Zypper
   zypper:
     name: git
-    state: "{{ git_state }}"
+    state: "{{ 'latest' when git_install_latest else 'present' }}"
     update_cache: "{{ git_update_pkg_mgr }}"
   when: ansible_pkg_mgr == 'zypper'
 
 - name: Install git via pacman
   pacman:
     name: git
-    state: "{{ git_state }}"
+    state: "{{ 'latest' when git_install_latest else 'present' }}"
     update_cache: "{{ git_update_pkg_mgr }}"
   when: ansible_pkg_mgr == 'pacman'
 
 - name: Install git via Portage
   portage:
     name: git
-    state: "{{ git_state }}"
+    state: "{{ 'latest' when git_install_latest else 'present' }}"
     update_cache: "{{ git_update_pkg_mgr }}"
   when: ansible_pkg_mgr == 'portage'
 ...

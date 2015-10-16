@@ -1,4 +1,4 @@
 ---
-git_state: 'latest'
+git_install_latest: no
 git_update_pkg_mgr: no
 ...
