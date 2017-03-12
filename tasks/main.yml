@@ -12,6 +12,7 @@
     state: "{{ 'latest' if git_install_latest else 'present' }}"
     update_cache: "{{ git_update_pkg_mgr }}"
   when: ansible_pkg_mgr == 'apt'
+  become: yes
 
 - name: Install git on CentOS-flavours
   yum:
@@ -19,6 +20,7 @@
     state: "{{ 'latest' if git_install_latest else 'present' }}"
     update_cache: "{{ git_update_pkg_mgr }}"
   when: ansible_pkg_mgr == 'yum'
+  become: yes
 
 - name: Install git via Zypper
   zypper:
@@ -26,6 +28,7 @@
     state: "{{ 'latest' if git_install_latest else 'present' }}"
     update_cache: "{{ git_update_pkg_mgr }}"
   when: ansible_pkg_mgr == 'zypper'
+  become: yes
 
 - name: Install git via pacman
   pacman:
@@ -33,6 +36,7 @@
     state: "{{ 'latest' if git_install_latest else 'present' }}"
     update_cache: "{{ git_update_pkg_mgr }}"
   when: ansible_pkg_mgr == 'pacman'
+  become: yes
 
 - name: Install git via Portage
   portage:
@@ -40,4 +44,5 @@
     state: "{{ 'latest' if git_install_latest else 'present' }}"
     update_cache: "{{ git_update_pkg_mgr }}"
   when: ansible_pkg_mgr == 'portage'
+  become: yes
 ...
